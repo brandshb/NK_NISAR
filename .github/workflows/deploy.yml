@@ -1,0 +1,25 @@
+# GitHub Actions: Auto run bot when repo gets updated
+name: NK_NISAR Bot
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔄 Checkout repo
+      uses: actions/checkout@v3
+
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: 📦 Install dependencies
+      run: npm install
+
+    - name: ▶️ Start Bot (QR will show in logs)
+      run: node index.js
