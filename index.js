@@ -36,3 +36,6 @@ sock.ev.on('creds.update', saveState);
 
 startBot();
 
+process.on('uncaughtException', err => {
+  console.error('UNCAUGHT ERROR:', err);
+});
